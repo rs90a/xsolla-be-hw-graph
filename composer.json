@@ -1,0 +1,22 @@
+{
+    "name": "xsolla-graphql-php",
+    "description": "Xsolla Backend Summer School 2020",
+    "require": {
+        "php": "~7.2",
+        "ext-json": "*",
+        "slim/slim": "3.9.2",
+        "webonyx/graphql-php": "^14.0",
+        "doctrine/orm": "2.6.3",
+        "doctrine/doctrine-bundle": "^1.8",
+        "doctrine/annotations": "^1.6"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Graph\\": "src"
+        }
+    }
+}
