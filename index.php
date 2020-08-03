@@ -5,28 +5,20 @@
 // curl http://localhost:8080 -d '{"query": "mutation { sum(x: 2, y: 2) }" }'
 require_once __DIR__ . '/vendor/autoload.php';
 
-use GraphQL\Type\Definition\ObjectType;
-use GraphQL\Type\Definition\Type;
-use GraphQL\Type\Schema;
-use GraphQL\GraphQL;
 use Slim\App;
-
-//require_once __DIR__ . '/schema.php';
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 require __DIR__ . '/src/Dependencies/dependencies.php';
 
 $app = new App($container);
 $container = $app->getContainer();
 
-
-//$app->add(new middlewares\CORS());
-
 $app->get('/', function(Request $request, Response $response) {
     return $response->write(file_get_contents(__DIR__ . '/src/graphiql/index.html'));
 });
 
 $app->post('/graph', 'GraphQLController:process');
-//$app->post('/rest', 'GraphQLController:process');
 
 
 $app->group('/rest', function () {
