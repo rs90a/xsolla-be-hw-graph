@@ -19,25 +19,11 @@ class UserController
 
     public function getUserInfo(Request $request, Response $response)
     {
-        $input = json_decode($request->getBody(), true);
+        $username = 'tester';
 
-        $requestModel = ['auth_data' => false];
-
-        $result = $this->userService->getUserInfo($requestModel);
+        $result = $this->userService->getUserInfo($username);
 
         return $response->withStatus(200)->withJson($result);
-    }
-
-    public function getOwnedGames(Request $request, Response $response)
-    {
-        $input = json_decode($request->getBody(), true);
-//        $query = $input['query'];
-
-        $requestModel = $input;
-
-        $result = $this->userService->getOwnedGames($requestModel);
-
-        return $response->withStatus(200)->withJson($output);
     }
 
     public function getWishlist(Request $request, Response $response)
@@ -46,8 +32,7 @@ class UserController
         $requestModel = $input;
 
         $result = $this->userService->getWishlist($requestModel);
-        $output = $result->toArray();
 
-        return $response->withStatus(200)->withJson($output);
+        return $response->withStatus(200)->withJson($result);
     }
 }

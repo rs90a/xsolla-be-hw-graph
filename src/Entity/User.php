@@ -24,27 +24,27 @@ class User
 
     /**
      * @var string
-     * @Column(name="email", type="string")
+     * @Column(name="username", type="string")
      */
-    private $email;
-
-    /**
-     * @var string
-     * @Column(name="name", type="string")
-     */
-    private $name;
-
-    /**
-     * @var string
-     * @Column(name="avatar_url", type="string")
-     */
-    private $avatarUrl;
+    private $username;
 
     /**
      * @var string
      * @Column(name="password", type="string")
      */
     private $password;
+
+    /**
+     * @var string
+     * @Column(name="date_create", type="string")
+     */
+    private $dateCreate;
+
+    /**
+     * @var string
+     * @Column(name="is_enabled", type="string")
+     */
+    private $isEnabled;
 
     /**
      * @return int
@@ -65,49 +65,17 @@ class User
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getUsername(): string
     {
-        return $this->email;
+        return $this->username;
     }
 
     /**
-     * @param string $email
+     * @param string $username
      */
-    public function setEmail(string $email): void
+    public function setUsername(string $username): void
     {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAvatarUrl(): string
-    {
-        return $this->avatarUrl;
-    }
-
-    /**
-     * @param string $avatarUrl
-     */
-    public function setAvatarUrl(string $avatarUrl): void
-    {
-        $this->avatarUrl = $avatarUrl;
+        $this->username = $username;
     }
 
     /**
@@ -124,5 +92,37 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateCreate(): string
+    {
+        return $this->dateCreate;
+    }
+
+    /**
+     * @param string $dateCreate
+     */
+    public function setDateCreate(string $dateCreate): void
+    {
+        $this->dateCreate = $dateCreate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsEnabled(): string
+    {
+        return $this->isEnabled;
+    }
+
+    /**
+     * @param string $isEnabled
+     */
+    public function setIsEnabled(string $isEnabled): void
+    {
+        $this->isEnabled = $isEnabled;
     }
 }

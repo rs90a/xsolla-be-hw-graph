@@ -41,7 +41,7 @@ $container['GameService'] = function ($container) {
 
 $container['UserService'] = function ($container) {
   return new UserService(
-      $container['GameService']
+      $container['UserStorage']
   );
 };
 

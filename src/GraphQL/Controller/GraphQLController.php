@@ -2,6 +2,7 @@
 
 namespace Graph\GraphQL\Controller;
 
+use GraphQL\Error\DebugFlag;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -33,9 +34,9 @@ class GraphQLController
 
         $variableValues = isset($input['variables']) ? $input['variables'] : null;
 
-        $rootValue = ['prefix' => 'You said: '];
-        $result = GraphQL::executeQuery($schema, $query, $rootValue, $this->container, $variableValues);
-        $output = $result->toArray();
+        $debug = DebugFlag::INCLUDE_DEBUG_MESSAGE | DebugFlag::INCLUDE_TRACE;
+        $result = GraphQL::executeQuery($schema, $query, null, $this->container, $variableValues);
+        $output = $result->toArray($debug);
 
         return $response->withJson($output);
     }

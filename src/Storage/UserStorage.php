@@ -3,6 +3,7 @@
 namespace Graph\Storage;
 
 use Doctrine\ORM\EntityManager;
+use Graph\Entity\User;
 
 class UserStorage
 {
@@ -16,8 +17,13 @@ class UserStorage
         $this->em = $em;
     }
 
-    public function getUserInfo()
+    public function getUserInfo(string $username): ?User
     {
-        return [];
+        /** @var User $game */
+        $game = $this->em
+            ->getRepository(User::class)
+            ->findOneBy(['username' => $username]);
+
+        return $game;
     }
 }

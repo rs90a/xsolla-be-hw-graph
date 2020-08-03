@@ -39,9 +39,4 @@ class GameController
 
         return $response->withJson($result);
     }
-
-    public function buyGame(Request $request, Response $response)
-    {
-        return $response->withJson('{"status": "success"}');
-    }
 }

@@ -2,35 +2,42 @@
 
 namespace Graph\Rest\Service;
 
+use Graph\Entity\User;
+use Graph\Storage\UserStorage;
 
 class UserService
 {
-    /** @var GameService  */
-    public $gameService;
+    /** @var UserStorage  */
+    public $userStorage;
 
     public function __construct(
-        GameService $gameService //REPO
+        UserStorage $userStorage
     ) {
-        $this->gameService = $gameService;
+        $this->userStorage = $userStorage;
     }
 
-    public function getUserInfo(array $model)
+    public function getUserInfo(string $username)
     {
-        return ['id' => 1, 'email' => 'test@test.ru'];
+        /** @var User $userEntity */
+        $userEntity = $this->userStorage->getUserInfo($username);
+
+        if ($userEntity === null) {
+            throw new \Exception('user not found', 404);
+        }
+
+        return [
+            'id' => $userEntity->getId(),
+            'username' => $userEntity->getUsername(),
+            'isEnabled' => $userEntity->getIsEnabled(),
+            'dateCreate' => $userEntity->getDateCreate(),
+        ];
     }
 
     public function getWishlist(array $model)
     {
-        $userExist = true;
-//        $this->gameRepository->getWishlistGames($userModel);
+        // isUserExist?
+        // $this->gameRepository->getUserWishlist($userModel);
 
-        return ['id' => 1, 'email' => 'test@test.ru'];
-    }
-
-    public function getOwnedGames(array $model)
-    {
-        $userExist = true;
-        //$this->gameRepository->getOwnedGames($userModel);
         return ['id' => 1, 'email' => 'test@test.ru'];
     }
 

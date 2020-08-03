@@ -10,18 +10,18 @@ use Graph\Storage\GameStorage;
 class GameService
 {
     /** @var GameStorage  */
-    public $gameRepository;
+    public $gameStorage;
 
     public function __construct(
-        GameStorage $gameRepository
+        GameStorage $gameStorage
     ) {
-        $this->gameRepository = $gameRepository;
+        $this->gameStorage = $gameStorage;
     }
 
     public function getGame(int $gameId)
     {
         /** @var GameEntity $gameEntity */
-        $gameEntity = $this->gameRepository->getGameById($gameId);
+        $gameEntity = $this->gameStorage->getGameById($gameId);
 
         if ($gameEntity === null) {
             throw new \Exception("not found game with id = ${gameId}");
@@ -32,7 +32,7 @@ class GameService
 
     public function getAllGames(): array
     {
-        $gameList = $this->gameRepository->getAllGames();
+        $gameList = $this->gameStorage->getAllGames();
 
         if (count($gameList) === 0) {
             throw new \Exception("Well... fuck");
@@ -43,7 +43,7 @@ class GameService
 
     public function getOnSaleGames()
     {
-        $sales = $this->gameRepository->getGameOnSale();
+        $sales = $this->gameStorage->getGameOnSale();
 
         return $this->convertSaleEntityCollectionToModel($sales);
     }
