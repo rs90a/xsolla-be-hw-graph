@@ -23,6 +23,7 @@ class GameController
 
         $result = $this->gameService->getGame($gameId);
 
+        // get descrt
         return $response->withJson($result->toArray());
     }
 

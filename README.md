@@ -8,4 +8,13 @@ $ php composer-setup.php --install-dir=bin72 --filename=composer
 $ echo "alias composer='php {replace to current dir path}/bin72/composer'" >> ~/.bash_profile
 ```
 ### Launch of a local application
-You can run **```php -S localhost:8080 -t public```** command in the terminal
+You can run **```php -S localhost:```
+
+### How to generate user password?
+You can run **```htpasswd -nbBC 10 name password```** command in the terminal
+
+OR
+```
+$user = "root";
+   $hash = password_hash("t00r", PASSWORD_DEFAULT);
+```

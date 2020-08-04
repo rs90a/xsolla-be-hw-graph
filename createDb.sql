@@ -20,13 +20,14 @@ CREATE TABLE `summer2020`.`game` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `summer2020`.`game_sale` (
+CREATE TABLE `game_sale` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `game_id` int(11) unsigned NOT NULL,
-  `date_end` datetime NOT NULL,
-  `is_active` tinyint(11) DEFAULT NULL,
+  `date_end` datetime NOT CURRENT_DATE,
+  `discount` varchar(10) DEFAULT "0",
+  `is_active` tinyint(11) DEFAULT "1",
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `summer2020`.`user_wishlist` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -44,3 +45,7 @@ VALUES
 	(1, 'rito_lol', 'League of legends', 'League of Legends (LoL) is a multiplayer online battle arena video game developed and published by Riot Games for Microsoft Windows and macOS.', 'https://theme.zdassets.com/theme_assets/43400/87a1ef48e43b8cf114017e3ad51b801951b20fcf.jpg', '2009-10-27 00:00:00', 1, 1),
 	(2, 'cdpr_witcher3', 'The Witcher 3: Wild hunt', 'The Witcher 3: Wild Hunt[b] is a 2015 action role-playing game developed and published by Polish developer CD Projekt and is based on The Witcher series of fantasy novels by Andrzej Sapkowski.', 'https://cdn-products.eneba.com/resized-products/0c87248bbfac2866d434aad19334b24b_390x400_1x-0.jpg', '2018-06-15 00:00:00', 0, 1),
 	(3, 'micro_seaofthieves', 'Sea of thieves', 'Sea of Thieves is a 2018 action-adventure game developed by Rare and published by Xbox Game Studios.', 'https://upload.wikimedia.org/wikipedia/en/7/77/Sea_of_thieves_cover_art.jpg', '2018-03-20 00:00:00', 0, 0);
+
+INSERT INTO `game_sale` (`id`, `game_id`, `date_end`, `discount`, `is_active`)
+VALUES
+	(1, 2, '2020-12-30 00:00:00', '40%', 1);

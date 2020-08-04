@@ -8,11 +8,28 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Tuupola\Middleware\HttpBasicAuthentication\PdoAuthenticator;
 
 require __DIR__ . '/src/Dependencies/dependencies.php';
 
 $app = new App($container);
 $container = $app->getContainer();
+
+$app->add(new Tuupola\Middleware\HttpBasicAuthentication([
+    'path' => ['/rest/user'],
+    'ignore' => [],
+    'realm' => 'Protected',
+//    "users" => [
+//        "root" => "t00r",
+//    ],
+// htpasswd -nbBC 10 name password
+    'authenticator' => new PdoAuthenticator([
+        'pdo' => new PDO('mysql:host=localhost:3306' . ';dbname=summer2020', 'root', 'root'),
+        'table' => 'users',
+        'user' => 'username',
+        'hash' => 'password',
+    ])
+]));
 
 $app->get('/', function(Request $request, Response $response) {
     return $response->write(file_get_contents(__DIR__ . '/src/graphiql/index.html'));

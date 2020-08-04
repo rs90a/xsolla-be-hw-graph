@@ -21,6 +21,8 @@ class UserController
     {
         $username = 'tester';
 
+        // $request->getHeader()
+
         $result = $this->userService->getUserInfo($username);
 
         return $response->withStatus(200)->withJson($result);

@@ -1,5 +1,7 @@
 <?php
 
+use Graph\GraphQL\Mutation\CreateGame;
+use Graph\GraphQL\Query\GameListQuery;
 use Graph\GraphQL\Query\GameQuery;
 use Graph\GraphQL\Query\QueryExample;
 use GraphQL\Type\Definition\Type;
@@ -20,6 +22,7 @@ $queryType = new ObjectType([
         ],
         'lul' => QueryExample::get(),
         'game' => GameQuery::get(),
+        'games' => GameListQuery::get(),
     ],
 ]);
 
@@ -36,6 +39,7 @@ $mutationType = new ObjectType([
                 return $args['x'] + $args['y'];
             },
         ],
+        'createGame' => CreateGame::get(),
     ],
 ]);
 
