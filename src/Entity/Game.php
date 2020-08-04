@@ -76,6 +76,12 @@ class Game
      */
     private $sale;
 
+    public function __construct()
+    {
+        $this->isFree = false;
+        $this->isEnabled = true;
+    }
+
     /**
      * @return int
      */

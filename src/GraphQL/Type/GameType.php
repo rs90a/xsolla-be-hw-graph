@@ -25,14 +25,14 @@ class GameType extends ObjectType
             'fields' => function () {
                 return [
                     'id' => [
-                        'type' => Type::nonNull(Type::id()),
+                        'type' => Type::id(),
                         'description' => 'Game SKU',
                         'resolve' => function (Game $game) {
                             return $game->getId();
                         }
                     ],
                     'sku' => [
-                        'type' => Type::nonNull(Type::id()),
+                        'type' => Type::nonNull(Type::string()),
                         'description' => 'Game SKU',
                         'resolve' => function (Game $game) {
                             return $game->getSku();
@@ -46,29 +46,29 @@ class GameType extends ObjectType
                         }
                     ],
                     'description' => [
-                        'type' => Type::nonNull(Type::string()),
-                        'description' => 'Last name of the author',
+                        'type' => Type::string(),
+                        'description' => 'description',
                         'resolve' => function (Game $game) {
                             return $game->getDescription();
                         }
                     ],
                     'imageUrl' => [
                         'type' => Type::string(),
-                        'description' => 'Last name of the author',
+                        'description' => 'description',
                         'resolve' => function (Game $game) {
                             return $game->getImageUrl();
                         }
                     ],
                     'isFree' => [
                         'type' => Type::nonNull(Type::boolean()),
-                        'description' => 'Last name of the author',
+                        'description' => 'description',
                         'resolve' => function (Game $game) {
                             return $game->isFree();
                         }
                     ],
                     'releaseDate' => [
                         'type' => Type::string(),
-                        'description' => 'Last name of the author',
+                        'description' => 'description',
                         'resolve' => function (Game $game) {
                             return $game->getReleaseDate();
                         }

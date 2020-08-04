@@ -49,11 +49,19 @@ class GameStorage
     {
         /** @var Game $game */
         $query = $this->em->createQuery('
-            SELECT game as gameObj, sale.dateEnd FROM Graph\Entity\Game game 
+            SELECT game as gameObj, sale.dateEnd as dateEnd FROM Graph\Entity\Game game 
             JOIN game.sale sale
             WHERE sale.isActive = 1
         ');
 
         return $query->getResult();
+    }
+
+    public function create(Game $game): Game
+    {
+        $this->em->persist($game);
+        $this->em->flush();
+
+        return $game;
     }
 }
