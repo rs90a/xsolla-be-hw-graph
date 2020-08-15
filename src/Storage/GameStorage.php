@@ -42,14 +42,13 @@ class GameStorage
     }
 
     /**
-     * @param int $gameId
-     * @return Game|null
+     * @return Game[]
      */
     public function getGameOnSale(): array
     {
         /** @var Game $game */
         $query = $this->em->createQuery('
-            SELECT game as gameObj, sale.dateEnd as dateEnd FROM Graph\Entity\Game game 
+            SELECT game FROM Graph\Entity\Game game 
             JOIN game.sale sale
             WHERE sale.isActive = 1
         ');

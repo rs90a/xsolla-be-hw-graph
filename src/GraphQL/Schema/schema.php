@@ -2,6 +2,7 @@
 
 use Graph\GraphQL\Mutation\CreateGame;
 use Graph\GraphQL\Query\GameListQuery;
+use Graph\GraphQL\Query\GameOnSaleListQuery;
 use Graph\GraphQL\Query\GameQuery;
 use Graph\GraphQL\Query\QueryExample;
 use GraphQL\Type\Definition\Type;
@@ -23,6 +24,7 @@ $queryType = new ObjectType([
         'lul' => QueryExample::get(),
         'game' => GameQuery::get(),
         'games' => GameListQuery::get(),
+        'gamesOnSale' => GameOnSaleListQuery::get()
     ],
 ]);
 
