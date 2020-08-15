@@ -6,7 +6,7 @@
         "ext-json": "*",
         "slim/slim": "3.9.2",
         "webonyx/graphql-php": "^14.0",
-        "doctrine/orm": "2.6.3",
+        "doctrine/orm": "^2.7",
         "doctrine/doctrine-bundle": "^1.8",
         "doctrine/annotations": "^1.6",
         "tuupola/slim-basic-auth": "^3.2"
