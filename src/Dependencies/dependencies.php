@@ -24,7 +24,15 @@ $container = new Container($configuration);
 
 /**
  * GraphQL
-*/
+ * @param $container
+ * @return mixed
+ */
+$container['user'] = function ($container) {
+    $username = $_SERVER["PHP_AUTH_USER"];
+    if (isset($username))
+        return $container['UserStorage']->getUserInfo($username);
+};
+
 $container['schema'] = $schema;
 
 $container['WishListStorage'] = function($container) {

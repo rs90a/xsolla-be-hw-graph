@@ -16,7 +16,7 @@ $app = new App($container);
 $container = $app->getContainer();
 
 $app->add(new Tuupola\Middleware\HttpBasicAuthentication([
-    'path' => ['/rest/user'],
+    'path' => ['/rest/user', '/graph'],
     'ignore' => [],
     'realm' => 'Protected',
 //    "users" => [

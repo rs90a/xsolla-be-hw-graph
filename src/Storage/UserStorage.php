@@ -19,11 +19,11 @@ class UserStorage
 
     public function getUserInfo(string $username): ?User
     {
-        /** @var User $game */
-        $game = $this->em
-            ->getRepository(User::class)
+        /** @var User $user */
+        $user = $this->em
+            ->getRepository("\Graph\Entity\User")
             ->findOneBy(['username' => $username]);
 
-        return $game;
+        return $user;
     }
 }

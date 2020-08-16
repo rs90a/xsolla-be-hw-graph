@@ -7,14 +7,14 @@ use GraphQL\Type\Definition\Type;
 
 class WishListQuery
 {
-    public static function get() {
+    public static function get()
+    {
         return [
             'type' => Type::listOf(GameType::get()),
-            'args' => [
-                'userId' => ['type' => Type::nonNull(Type::id())],
-            ],
             'resolve' => function ($root, array $args, $context) {
-                return $context['WishListStorage']->getWishList($args['userId']);
+                if (isset($context['user']) && $context['user'])
+                    return $context['WishListStorage']->getWishList($context['user']->getId());
+                return [];
             }
         ];
     }
