@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\Expr\Join;
 use Graph\Entity\Game;
 
-class qgitqGameStorage
+class GameStorage
 {
     /** @var EntityManager */
     protected $em;
