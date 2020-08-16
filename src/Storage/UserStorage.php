@@ -21,7 +21,7 @@ class UserStorage
     {
         /** @var User $user */
         $user = $this->em
-            ->getRepository("\Graph\Entity\User")
+            ->getRepository("Graph\Entity\User")
             ->findOneBy(['username' => $username]);
 
         return $user;

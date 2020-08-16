@@ -12,9 +12,7 @@ class WishListQuery
         return [
             'type' => Type::listOf(GameType::get()),
             'resolve' => function ($root, array $args, $context) {
-                if (isset($context['user']) && $context['user'])
-                    return $context['WishListStorage']->getWishList($context['user']->getId());
-                return [];
+                return $context['WishStorage']->getWishList($context['user']->getId());
             }
         ];
     }

@@ -26,7 +26,7 @@ class GameType extends ObjectType
                 return [
                     'id' => [
                         'type' => Type::id(),
-                        'description' => 'Game SKU',
+                        'description' => 'Game Id',
                         'resolve' => function (Game $game) {
                             return $game->getId();
                         }
@@ -47,28 +47,28 @@ class GameType extends ObjectType
                     ],
                     'description' => [
                         'type' => Type::string(),
-                        'description' => 'description',
+                        'description' => 'Description of the game',
                         'resolve' => function (Game $game) {
                             return $game->getDescription();
                         }
                     ],
                     'imageUrl' => [
                         'type' => Type::string(),
-                        'description' => 'description',
+                        'description' => 'Url of image',
                         'resolve' => function (Game $game) {
                             return $game->getImageUrl();
                         }
                     ],
                     'isFree' => [
                         'type' => Type::nonNull(Type::boolean()),
-                        'description' => 'description',
+                        'description' => 'Game is free',
                         'resolve' => function (Game $game) {
                             return $game->isFree();
                         }
                     ],
                     'releaseDate' => [
                         'type' => Type::string(),
-                        'description' => 'description',
+                        'description' => 'Release date of the game',
                         'resolve' => function (Game $game) {
                             return $game->getReleaseDate();
                         }

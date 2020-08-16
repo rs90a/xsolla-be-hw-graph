@@ -1,6 +1,7 @@
 <?php
 
 use Graph\GraphQL\Mutation\CreateGame;
+use Graph\GraphQL\Mutation\CreateWish;
 use Graph\GraphQL\Query\GameListQuery;
 use Graph\GraphQL\Query\GameOnSaleListQuery;
 use Graph\GraphQL\Query\WishListQuery;
@@ -44,6 +45,7 @@ $mutationType = new ObjectType([
             },
         ],
         'createGame' => CreateGame::get(),
+        'createWish' => CreateWish::get()
     ],
 ]);
 

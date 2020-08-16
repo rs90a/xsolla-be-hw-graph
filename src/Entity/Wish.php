@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\Table;
  * @Entity
  * @Table(name="summer2020.user_wishlist")
  */
-class WishList
+class Wish
 {
     /**
      * @var int
