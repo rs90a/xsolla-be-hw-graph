@@ -13,6 +13,7 @@ use Graph\Rest\Controller\UserController;
 use Graph\Rest\Service\GameService;
 use Graph\Rest\Service\UserService;
 use Graph\Storage\UserStorage;
+use Graph\Storage\WishListStorage;
 use Slim\Container;
 
 require_once __DIR__ . '/../GraphQL/Schema/schema.php';
@@ -26,6 +27,11 @@ $container = new Container($configuration);
 */
 $container['schema'] = $schema;
 
+$container['WishListStorage'] = function($container) {
+    return new WishListStorage(
+        $container['EntityManager']
+    );
+};
 
 $container['GameStorage'] = function($container) {
     return new GameStorage(

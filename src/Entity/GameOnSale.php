@@ -7,8 +7,6 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 
 /**
@@ -23,26 +21,25 @@ class GameOnSale
      * @Id
      * @GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var ArrayCollection
-     * @ManyToOne(targetEntity="Game", inversedBy="sale")
-     * @JoinColumn(name="game_id", referencedColumnName="id")
+     * @Column(name="game_id", type="string")
      */
-    protected $game;
+    private $gameId;
 
     /**
      * @var string
      * @Column(name="date_end", type="string")
      */
-    protected $dateEnd;
+    private $dateEnd;
 
     /**
      * @var boolean
      * @Column(name="is_active", type="boolean")
      */
-    protected $isActive;
+    private $isActive;
 
     /**
      * @return int
@@ -63,17 +60,17 @@ class GameOnSale
     /**
      * @return ArrayCollection
      */
-    public function getGame(): ArrayCollection
+    public function getGameId(): ArrayCollection
     {
-        return $this->game;
+        return $this->gameId;
     }
 
     /**
-     * @param ArrayCollection $game
+     * @param ArrayCollection $gameId
      */
-    public function setGame(ArrayCollection $game): void
+    public function setGameId(ArrayCollection $gameId): void
     {
-        $this->game = $game;
+        $this->gameId = $gameId;
     }
 
     /**

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
 
 /**
@@ -65,16 +64,6 @@ class Game
      * @Column(name="is_enabled", type="boolean")
      */
     private $isEnabled;
-
-    /**
-     * @var ArrayCollection
-     * @OneToMany(
-     *     targetEntity="GameOnSale",
-     *     mappedBy="game",
-     *     cascade={"persist"}
-     * )
-     */
-    private $sale;
 
     public function __construct()
     {
@@ -208,21 +197,5 @@ class Game
     public function setIsEnabled(bool $isEnabled): void
     {
         $this->isEnabled = $isEnabled;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getSale(): ArrayCollection
-    {
-        return $this->sale;
-    }
-
-    /**
-     * @param ArrayCollection $sale
-     */
-    public function setSale(ArrayCollection $sale): void
-    {
-        $this->sale = $sale;
     }
 }

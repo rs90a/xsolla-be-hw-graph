@@ -3,9 +3,10 @@
 namespace Graph\Storage;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query\Expr\Join;
 use Graph\Entity\Game;
 
-class GameStorage
+class qgitqGameStorage
 {
     /** @var EntityManager */
     protected $em;
@@ -47,12 +48,16 @@ class GameStorage
     public function getGameOnSale(): array
     {
         /** @var Game $game */
-        $query = $this->em->createQuery('
-            SELECT game FROM Graph\Entity\Game game 
-            JOIN game.sale sale
-            WHERE sale.isActive = 1
-        ');
-
+        $queryBuilder = $this->em->createQueryBuilder();
+        $queryBuilder
+            ->select('game')
+            ->from('Graph\Entity\Game', 'game')
+            ->leftJoin('Graph\Entity\GameOnSale',
+                'gameOnSale',
+                Join::WITH,
+                'game.id = gameOnSale.gameId')
+            ->where('gameOnSale.isActive = 1');
+        $query = $queryBuilder->getQuery();
         return $query->getResult();
     }
 
